@@ -1,0 +1,43 @@
+{
+  "summary": {
+    "added": 1,
+    "removed": 1,
+    "modified": 0
+  },
+  "details": {
+    "added": {
+      "tables": [],
+      "measures": [
+        {
+          "name": "_measures.pveb",
+          "expression": "SUM(pedidos_vendas_aberto[quantity])",
+          "format": "",
+          "description": "",
+          "content": "measure pveb = SUM(pedidos_vendas_aberto[quantity])\n\t\tlineageTag: 0c00a238-55f1-4e8d-81db-df3a21086384\n\n\t\tannotation PBI_FormatHint = {\"isGeneralNumber\":true}"
+        }
+      ],
+      "columns": [],
+      "relationships": []
+    },
+    "removed": {
+      "tables": [],
+      "measures": [
+        {
+          "name": "_measures.customer_balance",
+          "expression": "```",
+          "format": "",
+          "description": "",
+          "content": "measure customer_balance = ```\n\t\t\t\n\t\t\tVAR _current_customer = SELECTEDVALUE(accounts_open[customer_code])\n\t\t\tVAR _balance = CALCULATE(MAX(cotacoes_aberto[customer_balance]), cotacoes_aberto[customer_code] = _current_customer)\n\t\t\tVAR qtt_customer = CALCULATE(COUNTROWS(accounts_open), FILTER(ALL(accounts_open),accounts_open[customer_code] = _current_customer))\n\t\t\t\n\t\t\t\n\t\t\tRETURN \n\t\t\tIF(ISINSCOPE(accounts_open[customer_code]), DIVIDE(_balance, qtt_customer), DIVIDE(_balance, 1))\n\t\t\t```\n\t\tlineageTag: 30638689-45d4-4f5f-b8dc-19e796c1b5cc\n\n\t\tannotation PBI_FormatHint = {\"isGeneralNumber\":true}"
+        }
+      ],
+      "columns": [],
+      "relationships": []
+    },
+    "modified": {
+      "tables": [],
+      "measures": [],
+      "columns": [],
+      "relationships": []
+    }
+  }
+}
